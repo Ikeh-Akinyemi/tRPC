@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
 import './App.css';
-import type { TRPCRouter } from '../../server/src/router';
-import { createReactQueryHooks } from '@trpc/react';
+import type { TRPCRouter } from '../../src/router';
+import { createTRPCReact } from '@trpc/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Create from './cats/Create';
 import Detail from './cats/Detail';
@@ -10,7 +10,7 @@ import List from './cats/List';
 
 const BACKEND_URL: string = "http://localhost:8080/cat";
 
-export const trpc = createReactQueryHooks<TRPCRouter>();
+export const trpc = createTRPCReact<TRPCRouter>();
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
