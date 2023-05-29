@@ -1,6 +1,6 @@
 import './List.css';
 import { trpc } from '../App';
-import type { Cat } from '../../../server/src/router';
+import type { Cat } from '../../../src/router';
 import { useState } from 'react';
 
 function List(props: {

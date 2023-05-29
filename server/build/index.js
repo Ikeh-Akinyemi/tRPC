@@ -29,14 +29,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const trpcExpress = __importStar(require("@trpc/server/adapters/express"));
-const router_1 = __importDefault(require("./router"));
+const router_1 = __importStar(require("./router"));
 const app = (0, express_1.default)();
-const createContext = ({}) => ({});
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use('/cat', trpcExpress.createExpressMiddleware({
     router: router_1.default,
-    createContext,
+    createContext: router_1.createContext,
 }));
 app.listen(8080, () => {
     console.log("Server running on port 8080");
