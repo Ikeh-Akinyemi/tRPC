@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./client/src/index.tsx",
   "author": "",
   "license": "ISC",
   "private": true,

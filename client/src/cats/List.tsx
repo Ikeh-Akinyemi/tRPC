@@ -1,14 +1,15 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import './List.css';
 import { trpc } from '../App';
-import type { Cat } from '../../../src/router';
+import type { Cat } from '../../../server/src/router';
 import { useState } from 'react';
 
 function List(props: {
   setDetail: (id: number) => void,
 }) {
   const [error, setError] = useState("");
-  const cats = trpc.useQuery(['list']);
-  const deleteMutation = trpc.useMutation(['delete'], {
+  const cats = trpc.list.useQuery();
+  const deleteMutation = trpc.delete.useMutation({
     onSuccess: () => {
       cats.refetch();
     },

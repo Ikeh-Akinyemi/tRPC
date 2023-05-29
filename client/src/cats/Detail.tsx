@@ -5,7 +5,7 @@ import { trpc } from '../App';
 function Detail(props: {
   id: number,
 }) {
-  const cat = trpc.useQuery(['get', props.id]);
+  const cat = trpc.get.useQuery(props.id);
 
   return (
     cat.data ? 
