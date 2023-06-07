@@ -6,8 +6,8 @@ function Create() {
   const [text, setText] = useState("");
   const [error, setError] = useState("");
 
-  const cats = trpc.useQuery(['list']);
-  const createMutation = trpc.useMutation(['create'], {
+  const cats = trpc.list.useQuery();
+  const createMutation = trpc.create.useMutation({
     onSuccess: () => {
       cats.refetch();
     },
