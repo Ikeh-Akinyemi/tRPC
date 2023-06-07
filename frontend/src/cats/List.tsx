@@ -1,6 +1,10 @@
 import './List.css';
 import { trpc } from '../App';
+<<<<<<< Updated upstream:client/src/cats/List.tsx
 import type { Cat } from '../../../src/router';
+=======
+import type { Cat } from '../../../backend/src/router';
+>>>>>>> Stashed changes:frontend/src/cats/List.tsx
 import { useState } from 'react';
 
 function List(props: {

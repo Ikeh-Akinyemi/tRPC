@@ -1,9 +1,15 @@
 
 import { useState } from 'react';
 import './App.css';
+<<<<<<< Updated upstream:client/src/App.tsx
 import type { TRPCRouter } from '../../src/router';
 import { createTRPCReact } from '@trpc/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+=======
+import { httpBatchLink } from '@trpc/client';
+import type { TRPCRouter } from '../../backend/src/router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+>>>>>>> Stashed changes:frontend/src/App.tsx
 import Create from './cats/Create';
 import Detail from './cats/Detail';
 import List from './cats/List';
