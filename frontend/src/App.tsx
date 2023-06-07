@@ -1,20 +1,30 @@
 
 import { useState } from 'react';
 import './App.css';
-import type { TRPCRouter } from '../../src/router';
-import { createTRPCReact } from '@trpc/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { httpBatchLink } from '@trpc/client';
+import type { TRPCRouter } from '../../backend/src/router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Create from './cats/Create';
 import Detail from './cats/Detail';
 import List from './cats/List';
+import { createTRPCReact } from '@trpc/react-query';
 
-const BACKEND_URL: string = "http://localhost:8080/cat";
-
+const BACKEND_URL = "http://localhost:8080/cat";
 export const trpc = createTRPCReact<TRPCRouter>();
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
-  const [trpcClient] = useState(() => trpc.createClient({ url: BACKEND_URL }));
+  // const [trpcClient] = useState(() => trpc.createClient({ url: BACKEND_URL }));
+
+  const [trpcClient] = useState(() =>
+    trpc.createClient({
+      links: [
+        httpBatchLink({
+          url: BACKEND_URL,
+        }),
+      ],
+    }),
+  );
 
   const [detailId, setDetailId] = useState(-1);
 
